@@ -1,4 +1,4 @@
-# Terraform module for S3 buckets secured by Bitbucket OIDC roles
+# Terraform module that creates S3 buckets secured by Bitbucket OIDC roles
 
 Generates S3 buckets, IAM roles and policies.
 These policies control access to the buckets and restrict their use to Bitbucket repositories within a Bitbucket
