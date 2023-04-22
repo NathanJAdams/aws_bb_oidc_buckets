@@ -115,7 +115,7 @@ pipelines:
 ## AWS limits and role strategy
 
 AWS enforces limits on the number of policies per role (20) and the size of a policy (6,144 characters).
-For many buckets or repositories, this can prevent a single role from being created with all the necessary permissions.
+If using many repositories or when creating many buckets, this can prevent a single role from being created with all the necessary permissions.
 Therefore, the `role_strategy` variable can be used to work around these limits by creating multiple roles.
 
 The example above uses a `role_strategy` set to `PER_REPOSITORY` which means that a role will be created for each repository.
