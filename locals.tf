@@ -36,4 +36,8 @@ locals {
     for permission in local.all_permissions :
     permission[local.permission_group_key] => permission...
   }
+  role_names = distinct([
+    for permission in local.all_permissions :
+    permission[local.permission_group_key]
+  ])
 }
