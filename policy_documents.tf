@@ -44,7 +44,7 @@ data "aws_iam_policy_document" "secure_transport" {
 }
 
 data "aws_iam_policy_document" "role_access" {
-  for_each = local.role_policies
+  for_each = local.role_permissions
 
   dynamic "statement" {
     for_each = each.value

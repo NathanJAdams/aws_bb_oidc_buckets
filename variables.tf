@@ -25,10 +25,10 @@ variable "permissions" {
     repo_name   = string
     repo_uuid   = string
     bucket_name = string
-    bucket_keys = list(string)
+    folders     = list(string)
     actions     = list(string)
   }))
-  description = "A list of permissions to apply"
+  description = "List of permissions to apply. Entries in the `folders` list allow actions on the folder (or bucket if empty) and everything inside it."
 }
 
 variable "bucket_versioning" {
