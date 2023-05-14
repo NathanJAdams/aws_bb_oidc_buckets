@@ -7,11 +7,11 @@ data "aws_iam_policy_document" "assume_role" {
       identifiers = [local.oidc_provider_arn]
     }
     actions = ["sts:AssumeRoleWithWebIdentity"]
-#    condition {
-#      test     = "StringEquals"
-#      variable = "${local.bitbucket_oidc_url}:aud"
-#      values   = [local.bitbucket_audience]
-#    }
+    condition {
+      test     = "StringEquals"
+      variable = "${local.bitbucket_oidc_url}:aud"
+      values   = [local.bitbucket_audience]
+    }
 #    condition {
 #      test     = "ForAnyValue:StringLike"
 #      variable = "${local.bitbucket_oidc_url}:sub"
