@@ -20,7 +20,7 @@ locals {
   all_permissions = [
     for index, permission in local.cleaned_permissions : {
       group_key_bucket = replace("${var.role_name_prefix}_${permission.bucket_name}", "/[^a-zA-Z0-9_+=,.@-]/", "")
-      group_key_repo   = replace("${var.role_name_prefix}_${var.bitbucket_workspace_name}_${permission.repo_name}", "/[^a-zA-Z0-9_+=,.@-]/", "")
+      group_key_repo   = replace("${var.role_name_prefix}-${var.bitbucket_workspace_name}-${permission.repo_name}", "/[^a-zA-Z0-9_+=,.@-]/", "")
       group_key_single = replace(var.role_name_prefix, "/[^a-zA-Z0-9_+=,.@-]/", "")
       sid              = "S3Access${index}"
       actions          = permission.actions
