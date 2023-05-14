@@ -9,12 +9,12 @@ data "aws_iam_policy_document" "assume_role" {
     actions = ["sts:AssumeRoleWithWebIdentity"]
     condition {
       test     = "StringEquals"
-      variable = "${local.bitbucket_oidc_url}:aud"
+      variable = "${local.bitbucket_oidc_bare_url}:aud"
       values   = [local.bitbucket_audience]
     }
     condition {
-      test     = "ForAnyValue:StringLike"
-      variable = "${local.bitbucket_oidc_url}:sub"
+      test     = "StringLike"
+      variable = "${local.bitbucket_oidc_bare_url}:sub"
       values   = distinct(sort([for permission in var.permissions : "{${trim(permission.repo_uuid, "{}")}}:*"]))
     }
   }
