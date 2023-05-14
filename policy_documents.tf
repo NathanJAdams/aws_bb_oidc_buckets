@@ -12,11 +12,11 @@ data "aws_iam_policy_document" "assume_role" {
 #      variable = "${local.bitbucket_oidc_url}:aud"
 #      values   = [local.bitbucket_audience]
 #    }
-#    condition {
-#      test     = "ForAnyValue:StringLike"
-#      variable = "${local.bitbucket_oidc_url}:sub"
-#      values   = distinct(sort([for permission in var.permissions : "{${trim(permission.repo_uuid, "{}")}}:*"]))
-#    }
+    condition {
+      test     = "StringLike"
+      variable = "${local.bitbucket_oidc_url}:sub"
+      values   = distinct(sort([for permission in var.permissions : "{${trim(permission.repo_uuid, "{}")}}:*"]))
+    }
   }
 }
 
