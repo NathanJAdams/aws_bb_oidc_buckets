@@ -56,7 +56,7 @@ data "aws_iam_policy_document" "role_access" {
 
       condition {
         test     = "StringLike"
-        variable = "${local.bitbucket_oidc_url}:sub"
+        variable = "${local.bitbucket_oidc_bare_url}:sub"
         values   = [statement.value.sub]
       }
     }
